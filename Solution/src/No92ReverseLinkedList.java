@@ -1,7 +1,7 @@
 public class No92ReverseLinkedList {
 
     /* Definition for singly-linked list. */
-    public class ListNode {
+    private class ListNode {
         int val;
         ListNode next;
         ListNode() {}
