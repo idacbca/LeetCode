@@ -1,5 +1,3 @@
-package Linked_list;
-
 public class No92ReverseLinkedList {
 
     /* Definition for singly-linked list. */
