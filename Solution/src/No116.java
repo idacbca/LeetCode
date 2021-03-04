@@ -19,6 +19,7 @@ public class No116 {
         }
     }
 
+    /* Recursive connect */
     public Node connect(Node root) {
         if (root == null) return null;
         connectNode(root.left, root.right);
