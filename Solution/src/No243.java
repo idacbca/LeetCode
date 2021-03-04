@@ -10,7 +10,7 @@ public class No243 {
     public boolean isPalindrome(ListNode head) {
         ListNode pre, last, slow, fast, left, right;
         slow = fast = left = pre = head;
-        /** move slow and fast pointers to the right position */
+        /* move slow and fast pointers to the right position */
         while (fast != null && fast.next != null) {
             pre = slow;
             slow = slow.next;
@@ -20,7 +20,7 @@ public class No243 {
             pre = slow;
             slow = slow.next;
         }
-        /** reverse last half of the list */
+        /* reverse last half of the list */
         right = reverse(slow);
         last = right;
         while (right != null) {
@@ -31,7 +31,7 @@ public class No243 {
             left = left.next;
             right = right.next;
         }
-        /** reverse back the last half of the list */
+        /* reverse back the last half of the list */
         pre.next = reverse(last);
         return true;
     }
