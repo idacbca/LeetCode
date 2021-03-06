@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class No106 {
     private class TreeNode {
         int val;
@@ -12,7 +15,12 @@ public class No106 {
         }
     }
 
+    Map<Integer, Integer> indexMap = new HashMap<>();
+
     public TreeNode buildTree(int[] inorder, int[] postorder) {
+        for (int i = 0; i < inorder.length; i ++) {
+            indexMap.put(inorder[i], i);
+        }
         TreeNode root = build(inorder, 0, inorder.length - 1,
                 postorder, 0, postorder.length - 1);
         return root;
@@ -27,13 +35,7 @@ public class No106 {
         int rootVal = postorder[postEnd];
         TreeNode root = new TreeNode(rootVal);
 
-        int index = inStart;
-        for (int i = inStart; i <= inEnd; i ++) {
-            if (inorder[i] == rootVal) {
-                index = i;
-                break;
-            }
-        }
+        int index = indexMap.get(rootVal);
 
         int leftSize = index - inStart;
         root.left = build(inorder, inStart, index - 1,
