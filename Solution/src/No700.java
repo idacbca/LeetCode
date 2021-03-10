@@ -12,21 +12,18 @@ public class No700 {
         }
     }
 
-    public TreeNode searchBST(TreeNode root, int val) {
-        return search(root, val);
-    }
-
-    private TreeNode search(TreeNode root, int val) {
+    public TreeNode insertIntoBST(TreeNode root, int val) {
         if (root == null) {
-            return null;
+            return new TreeNode(val);
         }
 
-        if (root.val == val) {
-            return root;
-        } else if (root.val > val) {
-            return search(root.left, val);
-        } else {
-            return search(root.right, val);
+        if (val > root.val) {
+            root.right = insertIntoBST(root.right, val);
         }
+        if (val < root.val) {
+            root.left = insertIntoBST(root.left, val);
+        }
+
+        return root;
     }
 }
