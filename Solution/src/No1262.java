@@ -1,17 +1,7 @@
-import org.junit.Assert;
-import org.junit.Test;
-
-public class test {
-    @Test
-    public void test1() {
-        int[] A = {3, 6, 5, 1, 8};
-        int sum = maxSum(A);
-        Assert.assertEquals(18, sum);
-    }
-
-    private int maxSum(int[] A) {
+public class No1262 {
+    public int maxSumDivThree(int[] nums) {
         int[] state = {0, Integer.MIN_VALUE, Integer.MIN_VALUE};
-        for (int i : A) {
+        for (int i : nums) {
             if (i % 3 == 0) {
                 state[0] += i;
                 state[1] += i;
