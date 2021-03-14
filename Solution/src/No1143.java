@@ -30,7 +30,7 @@ public class No1143 {
         return memo[i][j];
     }
 
-    /* Iterate */
+    /* Iterate both O(mn) */
     public int longestCommonSubsequence2(String text1, String text2) {
         int m = text1.length();
         int n = text2.length();
