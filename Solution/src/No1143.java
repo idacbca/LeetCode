@@ -23,8 +23,8 @@ public class No1143 {
             memo[i][j] = 1 + dp(text1, i + 1, text2, j + 1);
         } else {
             memo[i][j] = Math.max(
-                    dp(text1, i + 1, text2, j),
-                    dp(text1, i, text2, j + 1)
+                dp(text1, i + 1, text2, j),
+                dp(text1, i, text2, j + 1)
             );
         }
         return memo[i][j];
