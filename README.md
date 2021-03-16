@@ -1,2 +1,2 @@
-# LeetCode solutions
+# LeetCode
 My LeetCode path.
