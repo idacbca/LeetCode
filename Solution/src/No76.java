@@ -1,18 +1,7 @@
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class test {
-    @Test
-    public void test1() {
-        String s = "aa";
-        String t = "aa";
-        String res = minWindow(s, t);
-        Assert.assertEquals("aa", res);
-    }
-
+public class No76 {
     public String minWindow(String s, String t) {
         Map<Character, Integer> need = new HashMap<>();
         Map<Character, Integer> window = new HashMap<>();
