@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class No416 {
+
     public boolean canPartition(int[] nums) {
         if (nums.length == 1) return false;
         int n = nums.length, sum = 0;
