@@ -1,2 +1,2 @@
 # LeetCode
-My LeetCode path.
+Yet another LeetCode path.
