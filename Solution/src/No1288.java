@@ -4,7 +4,7 @@ import java.util.Comparator;
 public class No1288 {
     public int removeCoveredIntervals(int[][] intervals) {
         if (intervals.length == 0) return 0;
-        Arrays.sort(intervals, new Comparator<int[]>() {
+        Arrays.sort(intervals, new Comparator<>() {
             public int compare(int[] a, int[] b) {
                 if (a[0] > b[0]) {
                     return 1;
