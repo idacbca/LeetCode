@@ -49,4 +49,34 @@ public class test {
         }
         return end == Integer.MAX_VALUE ? "" : s.substring(start, end);
     }
+
+    @Test
+    public void test2() {
+        String X = "OldSite:GeeksforGeeks.org";
+        String Y = "NewSite:GeeksQuiz.com";
+
+        int m = X.length();
+        int n = Y.length();
+
+        Assert.assertEquals(10, LCSubStr(X.toCharArray(), Y.toCharArray(), m, n));
+    }
+
+    static int LCSubStr(char[] X, char[] Y, int m, int n) {
+        int[] LCStuff = new int[n + 1];
+
+        int result = 0;
+
+        for (int i = 0; i <= m; i++) {
+            for (int j = n; j >= 0; j--) {
+                if (i == 0 || j == 0)
+                    LCStuff[j] = 0;
+                else if (X[i - 1] == Y[j - 1]) {
+                    LCStuff[j] = LCStuff[j - 1] + 1;
+                    result = Integer.max(result, LCStuff[j]);
+                } else
+                    LCStuff[j] = 0;
+            }
+        }
+        return result;
+    }
 }
