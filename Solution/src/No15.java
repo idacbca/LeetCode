@@ -7,7 +7,7 @@ public class No15 {
         Arrays.sort(nums);
         List<List<Integer>> res = new LinkedList<>();
         for (int i = 0; i < nums.length; i ++) {
-            List<List<Integer>> temp = twoSum(nums, i + 1, 0 - nums[i]);
+            List<List<Integer>> temp = twoSum(nums, i + 1, -nums[i]);
             for (List<Integer> twoNum : temp) {
                 twoNum.add(nums[i]);
                 res.add(twoNum);
