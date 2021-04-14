@@ -6,7 +6,7 @@ public class No887 {
     Map<Integer, Integer> memo = new HashMap<>();
 
     public int superEggDrop(int k, int n) {
-        return 1;
+        return dp(k, n);
     }
 
     private int dp(int k, int n) {
@@ -38,8 +38,8 @@ public class No887 {
         int lo = 1, hi = n;
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
-            int broken = dp(k - 1, mid - 1) + 1;
-            int notBroken = dp(k, n - mid) + 1;
+            int broken = dp2(k - 1, mid - 1) + 1;
+            int notBroken = dp2(k, n - mid) + 1;
             if (broken < notBroken) {
                 res = Math.min(res, notBroken);
                 lo = mid + 1;
@@ -50,5 +50,21 @@ public class No887 {
         }
         memo.put(key, res);
         return res;
+    }
+
+    /* Another way O(kn) */
+    public int superEggDrop3(int k, int n) {
+        int[][] dp = new int[k + 1][n + 1];
+
+        int m = 0;
+        // has k eggs, can drop m times at most,
+        // dp[k][m] is the most floors that can be tested
+        while (dp[k][m] < n) {
+            m ++;
+            for (int i = 1; i <= k; i ++) {
+                dp[i][m] = dp[i - 1][m - 1] + dp[i][m - 1] + 1;
+            }
+        }
+        return m;
     }
 }
