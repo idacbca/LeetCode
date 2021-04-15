@@ -12,6 +12,7 @@ public class No222 {
         }
     }
 
+    /* O(logN * logN) */
     public int countNodes(TreeNode root) {
         if (root == null) return 0;
         TreeNode l = root, r = root;
