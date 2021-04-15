@@ -20,11 +20,11 @@ public class No222 {
 
         while (l != null) {
             l = l.left;
-            lHight ++;
+            lHight++;
         }
         while (r != null) {
             r = r.right;
-            rHight ++;
+            rHight++;
         }
 
         if (lHight == rHight) {
