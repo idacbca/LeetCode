@@ -12,19 +12,20 @@ public class No938 {
         }
     }
 
-    int sum = 0;
-
     public int rangeSumBST(TreeNode root, int low, int high) {
-        traverse(root, low, high);
-        return sum;
+        return traverse(root, low, high);
     }
 
-    private void traverse(TreeNode root, int low, int high) {
-        if (root == null) return;
-        traverse(root.left, low, high);
-        if (root.val >= low && root.val <= high) {
-            sum += root.val;
+    private int traverse(TreeNode root, int low, int high) {
+        if (root == null) return 0;
+
+        if (root.val < low) {
+            return traverse(root.right, low, high);
         }
-        traverse(root.right, low, high);
+        if (root.val > high) {
+            return traverse(root.left, low, high);
+        }
+
+        return root.val + traverse(root.left, low, high) + traverse(root.right, low, high);
     }
 }
