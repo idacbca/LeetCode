@@ -10,7 +10,7 @@ public class No633 {
         return false;
     }
 
-    /* Using two pointers, thought the complexity is the same in the worst case */
+    /* Using two pointers, though the complexity is the same in the worst case */
     public boolean judgeSquareSum2(int c) {
         int left = 0;
         int right = (int) Math.sqrt(c);
