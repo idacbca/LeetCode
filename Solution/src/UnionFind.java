@@ -11,19 +11,19 @@ public class UnionFind {
         }
     }
 
-    public void union(int x, int y) {
-        int i = find(x);
-        int j = find(y);
-        if (i == j) {
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) {
             return;
         }
 
-        if (size[x] < size[y]) {
-            parent[x] = parent[y];
-            size[y] += size[x];
+        if (size[rootP] < size[rootQ]) {
+            parent[rootP] = parent[rootQ];
+            size[rootQ] += size[rootP];
         } else {
-            parent[y] = parent[x];
-            size[x] += size[y];
+            parent[rootQ] = parent[rootP];
+            size[rootP] += size[rootQ];
         }
     }
 
