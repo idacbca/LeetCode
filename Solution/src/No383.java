@@ -16,4 +16,17 @@ public class No383 {
         }
         return true;
     }
+
+    public boolean canConstruct1(String ransomNote, String magazine) {
+        int[] charFreq = new int[26];
+        for (char ch : magazine.toCharArray()) {
+            charFreq[ch-'a']++;
+        }
+        for (char ch : ransomNote.toCharArray()) {
+            if (--charFreq[ch - 'a'] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
