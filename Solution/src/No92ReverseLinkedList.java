@@ -1,14 +1,4 @@
 public class No92ReverseLinkedList {
-
-    /* Definition for singly-linked list. */
-    private class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-    }
-
     ListNode successor = null;
 
     private ListNode reverseN(ListNode head, int n) {
@@ -27,8 +17,22 @@ public class No92ReverseLinkedList {
         if (left == 1) {
             return reverseN(head, right);
         }
-        ListNode last = reverseBetween(head.next, left - 1, right - 1);
-        head.next = last;
+        head.next = reverseBetween(head.next, left - 1, right - 1);
+        return head;
+    }
+
+    public ListNode reverseBetween1(ListNode head, int left, int right) {
+        if (left == 1) {
+            if (right == 1) {
+                successor = head.next;
+                return head;
+            }
+            ListNode last = reverseBetween(head.next, 1, right - 1);
+            head.next.next = head;
+            head.next = successor;
+            return last;
+        }
+        head.next = reverseBetween(head.next, left - 1, right - 1);
         return head;
     }
 }
