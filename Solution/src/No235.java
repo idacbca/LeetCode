@@ -28,4 +28,20 @@ public class No235 {
         path.add(ptr);
         return path;
     }
+
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+        TreeNode ret = root;
+        TreeNode ptr = root;
+        while (true) {
+            if (ptr.val < p.val && ptr.val < q.val) {
+                ptr = ptr.right;
+            } else if (ptr.val > p.val && ptr.val > q.val) {
+                ptr = ptr.left;
+            } else {
+                ret = ptr;
+                break;
+            }
+        }
+        return ret;
+    }
 }
