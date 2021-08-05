@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class No986 {
     public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
@@ -26,5 +27,24 @@ public class No986 {
         }
         int[][] res = new int[intersect.size()][];
         return intersect.toArray(res);
+    }
+
+    public int[][] intervalIntersection2(int[][] firstList, int[][] secondList) {
+        int p1 = 0, p2 = 0;
+        List<int[]> ret = new ArrayList<>();
+        while (p1 < firstList.length && p2 < secondList.length) {
+            if (firstList[p1][0] <= secondList[p2][1] && secondList[p2][0] <= firstList[p1][1]) {
+                int[] intersection = new int[2];
+                intersection[0] = Math.max(firstList[p1][0], secondList[p2][0]);
+                intersection[1] = Math.min(firstList[p1][1], secondList[p2][1]);
+                ret.add(intersection);
+            }
+            if (firstList[p1][1] < secondList[p2][1]) {
+                p1++;
+            } else {
+                p2++;
+            }
+        }
+        return ret.toArray(new int[ret.size()][2]);
     }
 }
