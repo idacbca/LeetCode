@@ -17,4 +17,35 @@ public class No59 {
         }
         return matrix;
     }
+
+    public int[][] generateMatrix2(int n) {
+        int[][] matrix = new int[n][n];
+        int curNum = 1;
+        int left = 0, right = n - 1, top = 0, bottom = n - 1;
+        while (left <= right && top <= bottom) {
+            for (int col = left; col <= right; col++) {
+                matrix[top][col] = curNum;
+                curNum++;
+            }
+            for (int row = top + 1; row <= bottom; row++) {
+                matrix[row][right] = curNum;
+                curNum++;
+            }
+            if (left < right) {
+                for (int col = right - 1; col >= left; col--) {
+                    matrix[bottom][col] = curNum;
+                    curNum++;
+                }
+                for (int row = bottom - 1; row > top; row--) {
+                    matrix[row][left] = curNum;
+                    curNum++;
+                }
+            }
+            left++;
+            right--;
+            top++;
+            bottom--;
+        }
+        return matrix;
+    }
 }
