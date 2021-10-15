@@ -3,26 +3,18 @@ public class No2 {
         ListNode centinel = new ListNode(-1);
         ListNode ptr = centinel;
         int carry = 0;
-        while (l1 != null && l2 != null) {
-            int sum = l1.val + l2.val + carry;
+        while (l1 != null || l2 != null) {
+            int x = l1 != null ? l1.val : 0;
+            int y = l2 != null ? l2.val : 0;
+            int sum = x + y + carry;
             ptr.next = new ListNode(sum % 10);
             carry = sum / 10;
-            l1 = l1.next;
-            l2 = l2.next;
-            ptr = ptr.next;
-        }
-        while (l2 != null) {
-            int sum = l2.val + carry;
-            ptr.next = new ListNode(sum % 10);
-            carry = sum / 10;
-            l2 = l2.next;
-            ptr = ptr.next;
-        }
-        while (l1 != null) {
-            int sum = l1.val + carry;
-            ptr.next = new ListNode(sum % 10);
-            carry = sum / 10;
-            l1 = l1.next;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
             ptr = ptr.next;
         }
         if (carry != 0) {
