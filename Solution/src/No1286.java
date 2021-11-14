@@ -32,3 +32,36 @@ public class No1286 {
         return !combinations.isEmpty();
     }
 }
+
+// Follow up: using runtime next computation rather than precomputation.
+class CombinationIterator {
+    String characters;
+    int bitmask, n, k;
+
+    public CombinationIterator(String characters, int combinationLength) {
+        this.characters = characters;
+        this.n = characters.length();
+        this.k = combinationLength;
+        bitmask = (1 << n) - (1 << n-k);
+    }
+
+    public String next() {
+        StringBuilder curr = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            if ((bitmask & (1 << n - i - 1)) != 0) {
+                curr.append(characters.charAt(i));
+            }
+        }
+
+        bitmask--;
+        while (Integer.bitCount(bitmask) != k && bitmask > 0) {
+            bitmask--;
+        }
+
+        return curr.toString();
+    }
+
+    public boolean hasNext() {
+        return bitmask > 0;
+    }
+}
